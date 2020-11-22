@@ -2,6 +2,7 @@
 
 
 
+$( document ).ready(function() {
 
 for (let i = 9; i < 18; i++) {
     //loop through the to create a row and 4 columns for each hour between 9-5.
@@ -31,3 +32,19 @@ for (let i = 9; i < 18; i++) {
       $(".container").append(row);
 
   }
+
+  var saveBtn = $('.saveBtn');
+saveBtn.on('click', function(){
+  var eventId = $(this).attr('id');
+  var eventText = $(this).parent().siblings().children('.description').val();
+  localStorage.setItem(eventId, eventText);
+});
+
+//clear description and local storage.
+clearBtn.on('click', function(){
+$('.description').val("");
+localStorage.clear();
+
+});
+
+});
